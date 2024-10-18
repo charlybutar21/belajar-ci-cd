@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"    # Akses UI Jenkins
+      - "50000:50000"  # Agent-to-master communication
+    volumes:
+      - jenkins_home:/var/jenkins_home  # Persistensi data Jenkins
+    restart: always
+
+volumes:
+  jenkins_home:
